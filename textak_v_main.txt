@@ -3,13 +3,22 @@ to teda
 blázinec...
 pokusná změna
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+AHOJ PAVLIKU!!!!!!
+=======
+>>>>>>> origin/main
 
 Čauky Tome
     Tome věř mi
 Já jsem Pavlík
+<<<<<<< HEAD
 =======
 Zdar borciiii
 >>>>>>> origin/main
 
 
 Známe Bořka, všechno spraví!
+=======
+>>>>>>> origin/main
+>>>>>>> origin/main
