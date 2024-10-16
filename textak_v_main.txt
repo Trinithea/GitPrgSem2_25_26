@@ -2,7 +2,14 @@ AHoJ, to je změna!
 to teda
 blázinec...
 pokusná změna
+<<<<<<< HEAD
 
 Čauky Tome
     Tome věř mi
 Já jsem Pavlík
+=======
+Zdar borciiii
+>>>>>>> origin/main
+
+
+Známe Bořka, všechno spraví!
