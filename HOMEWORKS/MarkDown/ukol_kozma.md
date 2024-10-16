@@ -3,24 +3,28 @@
 ## **Add(T)**
 *Popis:*
 Přidá objekt T z parametru na konec listu.
+
 *Časová komplexita:*
 O(1) pokud kapacita se vejde do kapacity listu. O(n) pokud přidáním nového prvku přesáhne kapacitu listu a misí ji zvýšit tím, že vytvoří nový list s dvojnásobnou kapacitou.
 
 ## **Contains(T)**
 *Popis:*
 Prohledá list a zjistí jestli se T nenachází v listu. Vrátí true nebo false.
+
 *Časová komplexita:*
 O(n) - n je počet prvků v listě. Postupně projde kaźdý prvek v listu a zjistí jestli se jedná o prvek T.
 
 ## **Insert(Int32, T)**
 *Popis:*
 Vloží prvek T na zadanou pozici v listu.
+
 *Časová komplexita:*
 O(n) - n je počet prvků v listu. Prochází postupně pozice kam má nový prvek vložit a posune pozice ostatních prvků za ním.
 
 ## **Remove(T)**
 *Popis:*
 Prohledá list jestli se v něm nenachází prvek T a odstraní jej. Dále vrací true nebo false, podle toho jestli byl prvek úspešně odstraněn, nebo ne.
+
 *Časová komplexita:*
 O(n) - n je počert prvků v listu. Postupně prochází všechny prvky v listě dokud jeden neodstraní.
 
@@ -28,7 +32,7 @@ O(n) - n je počert prvků v listu. Postupně prochází všechny prvky v listě
 
 **List<T>** je array typu T s prázdnými poli vyhrazené pro přidávání nových prvků. Kdykoliv má být přídán nový prvek, v paměti se vytvoří, nový, dvojnásobně velký array a nahradí ten starý. Tím se "prodlouží" list. Narozdíl od Linked Listu je to jeden velký jednotný blok dat v paměti.
 
-**Linked** list je několik samostatných prvků v paměti, který mají "odkaz" kde se v paměti náchází předchozí a další prvek v listu a tvoří tak takový řetěz. Je vhodný pro práci s daty, kde se často mění velokost listu.
+**LinkedList<T>** list je několik samostatných prvků v paměti, který mají "odkaz" kde se v paměti náchází předchozí a další prvek v listu a tvoří tak takový řetěz. Je vhodný pro práci s daty, kde se často mění velokost listu.
 
 Zdroje: oficiální dokumentace na learn.microsoft.com[1](https://learn.microsoft.com/cs-cz/dotnet/api/system.collections.generic.linkedlist-1?view=net-8.0)[2](https://learn.microsoft.com/cs-cz/dotnet/api/system.collections.generic.list-1?view=net-8.0)
 
