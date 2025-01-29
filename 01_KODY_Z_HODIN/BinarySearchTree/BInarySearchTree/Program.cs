@@ -158,7 +158,9 @@ namespace BInarySearchTree
             LastName = lastName;
             Age = age;
         }
-
+        
+        // aby se nám při Console.WriteLine(student) nevypsala jen nějaká adresa v paměti,
+        // upravíme výpis objektu typu student na něco čitelného
         public override string ToString()
         {
             return string.Format("{0} {1} (ID: {2}) ze třídy {3}",FirstName,LastName,Id,ClassName);
