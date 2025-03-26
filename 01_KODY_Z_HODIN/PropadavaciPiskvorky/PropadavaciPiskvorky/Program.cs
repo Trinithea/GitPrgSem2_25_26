@@ -31,7 +31,7 @@ namespace PropadavaciPiskvorky
         public Hra(int pocetVyhernichZetonu, int pocetSloupcu, int pocetRadku, int pocetHracu)
         {
             this.pocetVyhernichZetonu = pocetVyhernichZetonu; // použili jsme slovo this, protože se parametr konstruktoru nazývá stejně jako datová položka v této třídě
-            hraciPole = new int[pocetSloupcu, pocetRadku];
+            hraciPole = new char[pocetSloupcu, pocetRadku];
 
             hraci = new Hrac[pocetHracu]; // vytvoří pole ale už nevytvoří samotné hráče! zatím jsou v poli jen samé null hodnoty
             VytvorHrace(); // hráči v poli se vytvoří až v této funkci
@@ -40,7 +40,7 @@ namespace PropadavaciPiskvorky
 
         // následující datové položky jsou privátní - není potřeba, aby byly vidět mimo třídu
         private int pocetVyhernichZetonu; // datová položka
-        private int[,] hraciPole;
+        private char[,] hraciPole;
         private Hrac[] hraci;
 
         private void VytvorHrace()
