@@ -4,18 +4,26 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using namespace;
+//using namespace; -> díky tomu můžeme propojovat projekty mezi sebou
 
+
+// namespace - jmenný prostor, ve kterém definujeme třídy
 namespace ConnectGame
-{
+{   // složené závorky vymezují určité bloky kódu, omezují viditelnost a existenci tříd, funkcí, proměnných, ...
+
+
+    // internal - tato třída je viditelná všude ve výsledném EXE souboru (tzv. assembly)
     // MODIFIKÁTORY PŘÍSTUPU (ACCESSIBILITY MODIFIERS)
     // public, private, protected, ... internal
+        // public - viditelné všude
+        // private - viditelné jen v dané třídě - defaultní nastavení (pokud není uvedeno, tak private)
     // -> ZAPOUZDŘENÍ (viditelnost určitých částí kódu)
-    internal class Program
+
+    internal class Program // v C# je vše ve třídě, v třídě jsou vlasnotsi, funkce a datové položky
     {
-        // v C# je vše ve třídě, v třídě jsou vlasnotsi, a funkce, datové položky
         static void Main(string[] args)
         {
+            // C# notace pro pojmenování
             // třídy, funkce, metody, veřejné vlastnosti: PascalCase notace
             // privátní a lokální proměnné:  camelCasel notace
             // v Pythonu: snake_case, v C# ne
