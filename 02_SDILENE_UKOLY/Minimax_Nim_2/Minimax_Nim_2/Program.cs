@@ -39,7 +39,7 @@ namespace MiniMax_Nim_2
         public List<int> Piles { get; private set; }
         public int MatchesInGame { get; private set; }
 
-        public NimGameState(IEnumerable<int> initialPiles)
+        public NimGameState(List<int> initialPiles)
         {
             Piles = new List<int>(initialPiles);
             MatchesInGame = Piles.Sum();
