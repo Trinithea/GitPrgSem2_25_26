@@ -108,14 +108,14 @@ namespace MiniMax_Nim_2
 
         private Tuple<int, byte> GetBestBotMove()
         {
-            int bestPile = 0;
-            byte matchesToRemove = 1;
+            int bestPile = 0; // budoucí nejlepší hromádka k odebírání sirek
+            byte matchesToRemove = 1; // buoducí nejlepší momentální počet k odebrání
 
             int score = minimax(_state.Piles.ToList(), 10, true);
 
             int minimax(List<int> piles, int depth, bool maximizingPlayer)
             {
-                // TODO: implementujte :)
+                // TODO: implementujte :) (nezapomeňte i vhodně aktualizovat bestPile a matchesToRemove
             }
 
             return new Tuple<int, byte>(bestPile, matchesToRemove);
