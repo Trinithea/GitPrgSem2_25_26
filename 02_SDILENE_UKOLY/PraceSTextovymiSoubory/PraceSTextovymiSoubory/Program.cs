@@ -13,6 +13,7 @@ namespace PraceSTextovymiSoubory
             //  - RELATIVNÍ vzhledem k EXE souboru (ve složce ...\Váš projekt\bin\Debug\netX.Y\)
             //      - př. "vstupni_soubor.txt" 
             //      - př. @"vstupy\1.txt" -> použijeme zavináč, abychom nemuseli zdvojovat zpětná lomítka (vedou obvykle na vyjádření speciálních znaků)
+            //      - př. @"..\vstupy\1.txt" -> jdeme o složku zpět a v ní hledáme složku "vstupy" se souborem 1.txt
             //  - ABSOLUTNÍ adresa: 
             //      - př. @"C:\Users\mysak\Documents\03_TEACHING\02_SEMINAR_Z_PROGRAMOVANI\25_26\PrgSem2\vstup.txt"
 
@@ -96,14 +97,14 @@ namespace PraceSTextovymiSoubory
             // Výsledek si nechte vypsat do konzole a uveďte odpověď v komentáři.
             // Vyřešte vždy i všechny podotázky.
 
-            // Složku vstupni_soubory (na GC) si vložte do ...\bin\Debug\netX.Y\. 
+            // Složku vstupni_soubory si přesuňte do ...\bin\Debug\netX.Y\. 
             // Dále si ji otevřte ve VS Code a sledujte obsah souborů. 
             // Doporučení: pro důkladnější pátrání si stáhněte extension do VS Code Inspector Hex nebo Hex Editor.
-            
+
 
 
             //
-            using(StreamWriter sw = new StreamWriter(@"vstupni_soubory\2.txt"))
+            using (StreamWriter sw = new StreamWriter(@"..\..\..\..\vstupni_soubory\2.txt"))
             {
                 sw.WriteLine("Ahoj \tsvěte!\n");
             }
@@ -119,13 +120,13 @@ namespace PraceSTextovymiSoubory
 
 
             //
-            using (StreamWriter sw = new StreamWriter(@"vstupni_soubory\4.txt"))
+            using (StreamWriter sw = new StreamWriter(@"..\..\..\..\vstupni_soubory\4.txt"))
             {
                 sw.WriteLine("1");
                 sw.WriteLine("2");
                 sw.WriteLine("3");
             }
-            using (StreamWriter sw = new StreamWriter(@"vstupni_soubory\5.txt"))
+            using (StreamWriter sw = new StreamWriter(@"..\..\..\..\vstupni_soubory\5.txt"))
             {
                 sw.Write("1\n2\n3");
             }
