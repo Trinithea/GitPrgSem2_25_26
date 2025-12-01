@@ -114,7 +114,7 @@ namespace PraceSTextovymiSoubory
             
 
 
-            // (105b) 2. Jaký je počet znaků v souboru 1.txt, když pomineme bílé znaky?
+            // (10b) 2. Jaký je počet znaků v souboru 1.txt, když pomineme bílé znaky?
             // Tip: Struktura Char má statickou funkci IsWhiteSpace().            
             
 
