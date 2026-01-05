@@ -1,0 +1,16 @@
+﻿<Window x:Class="WPFUvodniHodina.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFUvodniHodina"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnPozdrav" Content="čus" HorizontalAlignment="Left" Margin="370,147,0,0" VerticalAlignment="Top" Height="119" Width="229" Background="#FFCE3232" FontSize="24" Click="Klik" MouseEnter="btnPozdrav_MouseEnter"/>
+        <TextBox x:Name="txtPozdrav" HorizontalAlignment="Left" Margin="370,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Sem napiš pozdrav:" HorizontalAlignment="Left" Margin="246,291,0,0" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="246,165,0,0" VerticalAlignment="Top" Height="86" Width="113" Click="Klik"/>
+
+    </Grid>
+</Window>
