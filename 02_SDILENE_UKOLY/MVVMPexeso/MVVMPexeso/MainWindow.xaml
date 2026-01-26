@@ -32,7 +32,7 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate> 
                     <!--Command: co se provede po kliknutí na tlačítko karty-->
-                    <!--CommandParametr: předá se kliknutá karta-->
+                    <!--CommandParametr: předá se kliknutá karta jako parametr příkazu -->
                     <Button 
                     Command="{Binding DataContext.CardClickCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                     CommandParameter="{Binding}" 

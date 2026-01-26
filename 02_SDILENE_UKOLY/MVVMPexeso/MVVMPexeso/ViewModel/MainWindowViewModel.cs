@@ -18,7 +18,7 @@ using System.Windows.Threading;
 
 namespace MVVMPexeso.ViewModel
 {
-    internal class MainWindowViewModel : INotifyPropertyChanged
+    internal class MainWindowViewModel : ViewModelBase
     {
         public RelayCommand StartCommand => new RelayCommand(execute => StartGame(), canExecute => _isGameRunning == false);
         public RelayCommand CardClickCommand => new RelayCommand(execute => CardClicked(execute as CardViewModel), canExecute => _isGameRunning == true);
@@ -31,7 +31,6 @@ namespace MVVMPexeso.ViewModel
         private Color _defaultColor = Colors.AliceBlue;
         private Color _higlightColor  = Colors.Green;
 
-        public ObservableCollection<CardViewModel> Cards { get; set; }
         private bool _isGameRunning = false;
         private bool _isBusy = false;
 
@@ -43,9 +42,11 @@ namespace MVVMPexeso.ViewModel
 
         #region Data Binding
 
+        // Vlastnosti, na nichž máme data binding: karty pexesa, velikost gridu (neměnné), skóre
+        public ObservableCollection<CardViewModel> Cards { get; set; }
+
         public int GridSize => (int)Math.Sqrt(Cards.Count);
 
-        // Vlastnosti, na nichž máme data binding: skóre a jestli se zrovna hraje
         private int _score;
         public int Score
         {
@@ -60,15 +61,6 @@ namespace MVVMPexeso.ViewModel
             }
         }
 
-
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-
-
         #endregion
 
         #region Herní logika
@@ -77,7 +69,7 @@ namespace MVVMPexeso.ViewModel
         {   
             CreateGameCards();
             ShuffleCards();
-            OnPropertyChanged(nameof(GridSize));
+            OnPropertyChanged(nameof(GridSize)); // máme nachystané karty, vyvoláme funkci, že se grid změnil
             _isGameRunning = true;
         }
         private void CreateGameCards()
