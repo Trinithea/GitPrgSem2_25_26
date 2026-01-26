@@ -1,0 +1,107 @@
+﻿<Window x:Class="MVVMPexeso.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMPexeso"
+        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel>
+            <Label FontSize="50" HorizontalAlignment="Center">Gridlock</Label>            
+            <Button Margin="20 10"  Command="{Binding StartCommand}" >Start Game</Button>
+            <Button Margin="20 10"  Command="{Binding EndCommand}" >End Game</Button>
+            <Label HorizontalAlignment="Center">Score:</Label>
+            <Label HorizontalAlignment="Center" FontSize="40" Foreground="Green" Content="{Binding Score}"/>
+<<<<<<< Updated upstream
+            <Label HorizontalAlignment="Center" FontSize="16" >Board size</Label>
+=======
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+            <Label HorizontalAlignment="Center">Field size:</Label>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+            <Slider x:Name="BoardSizeSlider" Margin="5,0,5,0" SmallChange="1" Minimum="{Binding MIN_FIELD_SIZE}" Maximum="{Binding MAX_FIELD_SIZE}" TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft" Value="{Binding BoardSize, UpdateSourceTrigger=PropertyChanged}" />
+            <Label HorizontalAlignment="Center" FontSize="16">Number of players</Label>
+            <Slider x:Name="PlayerCountSlider" Margin="5,0,5,0" SmallChange="1" Minimum="{Binding MIN_PLAYERS}" Maximum="{Binding MAX_PLAYERS}" TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft" Value="{Binding PlayerCount, UpdateSourceTrigger=PropertyChanged}" />
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+            <Button Margin="20 10"  Command="{Binding SaveCommand}" >Save Game</Button>
+            <Button Margin="20 10"  Command="{Binding LoadCommand}" >Load Game</Button>
+=======
+            <Label HorizontalAlignment="Center" FontSize="16" >Board size</Label>
+            <Slider x:Name="BoardSizeSlider" Margin="5,0,5,0" SmallChange="1" Minimum="{Binding MIN_FIELD_SIZE}" Maximum="{Binding MAX_FIELD_SIZE}" TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft" Value="{Binding BoardSize, UpdateSourceTrigger=PropertyChanged}" />
+            <Label HorizontalAlignment="Center" FontSize="16">Number of players</Label>
+            <Slider x:Name="PlayerCountSlider" Margin="5,0,5,0" SmallChange="1" Minimum="{Binding MIN_PLAYERS}" Maximum="{Binding MAX_PLAYERS}" TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft" Value="{Binding PlayerCount, UpdateSourceTrigger=PropertyChanged}" />
+>>>>>>> Stashed changes
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="RTSToggle" Margin="8, 0, 8, 0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding RTSMode}" IsEnabled="False"></CheckBox>
+                <Label FontSize="16" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">RTS gamemode</Label>
+            </Grid>
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/main
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+        </StackPanel>
+
+        <ItemsControl ItemsSource="{Binding UISquares}" Grid.Column="1">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="{Binding GridSize}"
+                         Columns="{Binding GridSize}" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <!--Šablona pro jednotlivé karty (budou to obyčejná tlačítka s TextBlockem uvnitř) -->
+            <ItemsControl.ItemTemplate>
+                <DataTemplate> 
+                    <!--Command: co se provede po kliknutí na tlačítko karty-->
+                    <!--CommandParametr: předá se kliknutá karta jako parametr příkazu -->
+                    <Button
+                    Command="{Binding DataContext.SquareClickCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                    CommandParameter="{Binding}" 
+                    FontSize="24"
+                    Margin="5"
+                    Background="{Binding Brush}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="BorderThickness" Value="5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    </Button>
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Window>

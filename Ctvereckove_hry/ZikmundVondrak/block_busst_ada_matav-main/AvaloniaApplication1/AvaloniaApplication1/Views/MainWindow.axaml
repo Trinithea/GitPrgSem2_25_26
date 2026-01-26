@@ -1,0 +1,260 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaApplication1.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="650"
+        x:Class="AvaloniaApplication1.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="Block Blast"
+        MinWidth="600" MinHeight="500"
+        Background="#1a1a2e">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Viewbox Stretch="Uniform" StretchDirection="Both" Margin="15">
+        <Grid ColumnDefinitions="Auto,*" RowDefinitions="*" Width="850" Height="580">
+
+            <Border Grid.Column="0"
+                    Background="#16213e"
+                    CornerRadius="10"
+                    Padding="10"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+                <ItemsControl ItemsSource="{Binding HraciPoleCells}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="8" Columns="8"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="vm:CellViewModel">
+                            <Button Command="{Binding $parent[ItemsControl].((vm:MainWindowViewModel)DataContext).KlikNaBunkuCommand}"
+                                    CommandParameter="{Binding Index}"
+                                    Padding="0"
+                                    Margin="0"
+                                    BorderThickness="0"
+                                    Background="Transparent">
+                                <Border Width="55" Height="55"
+                                        Margin="2"
+                                        CornerRadius="5"
+                                        Background="{Binding Barva}"
+                                        BorderBrush="#0f3460"
+                                        BorderThickness="1"
+                                        Cursor="Hand">
+                                    <Border.Styles>
+                                        <Style Selector="Border:pointerover">
+                                            <Setter Property="Opacity" Value="0.8"/>
+                                        </Style>
+                                    </Border.Styles>
+                                </Border>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Border>
+
+            <StackPanel Grid.Column="1" Margin="25,0,0,0" Spacing="15" VerticalAlignment="Center">
+
+                <Border Background="#16213e" CornerRadius="10" Padding="20">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="{Binding StavHryText}"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="#ffcc00"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"/>
+
+                        <TextBlock Text="SCORE"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="#e94560"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Score}"
+                                   FontSize="42"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+
+                        <Rectangle Height="1" Fill="#0f3460" Margin="0,5"/>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                            <TextBlock Text="HIGHSCORE:"
+                                       FontSize="14"
+                                       Foreground="#888"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Highscore}"
+                                       FontSize="18"
+                                       FontWeight="Bold"
+                                       Foreground="#e94560"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="#16213e" CornerRadius="10" Padding="15">
+                    <StackPanel Spacing="8">
+                        <Button Content="Nova hra"
+                                Command="{Binding NovaHraCommand}"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Padding="15,10"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Background="#e94560"
+                                Foreground="White"
+                                CornerRadius="5"/>
+
+                        <Button Content="Ulozit hru"
+                                Command="{Binding UlozitHruCommand}"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Padding="12,8"
+                                FontSize="14"
+                                Background="#0f3460"
+                                Foreground="White"
+                                CornerRadius="5"/>
+
+                        <Button Content="Nacist hru"
+                                Command="{Binding NacistHruCommand}"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Center"
+                                Padding="12,8"
+                                FontSize="14"
+                                Background="#0f3460"
+                                Foreground="White"
+                                CornerRadius="5"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Background="#16213e" CornerRadius="10" Padding="15">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="TVARY"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="#e94560"
+                                   HorizontalAlignment="Center"/>
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Spacing="12">
+
+                            <Button Command="{Binding VyberTvar1Command}"
+                                    Padding="0" BorderThickness="0" Background="Transparent">
+                                <Border CornerRadius="8"
+                                        Padding="8"
+                                        Width="85" Height="85"
+                                        Cursor="Hand"
+                                        BorderThickness="3"
+                                        BorderBrush="{Binding Tvar1Border}">
+                                    <Border.Styles>
+                                        <Style Selector="Border">
+                                            <Setter Property="Background" Value="#0f3460"/>
+                                        </Style>
+                                        <Style Selector="Border:pointerover">
+                                            <Setter Property="Background" Value="#1a4a7a"/>
+                                        </Style>
+                                    </Border.Styles>
+                                    <ItemsControl ItemsSource="{Binding Tvar1Cells}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <UniformGrid Rows="{Binding Tvar1Rows}" Columns="{Binding Tvar1Cols}"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Width="13" Height="13"
+                                                        Margin="1"
+                                                        CornerRadius="2"
+                                                        Background="{Binding}"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Border>
+                            </Button>
+
+                            <Button Command="{Binding VyberTvar2Command}"
+                                    Padding="0" BorderThickness="0" Background="Transparent">
+                                <Border CornerRadius="8"
+                                        Padding="8"
+                                        Width="85" Height="85"
+                                        Cursor="Hand"
+                                        BorderThickness="3"
+                                        BorderBrush="{Binding Tvar2Border}">
+                                    <Border.Styles>
+                                        <Style Selector="Border">
+                                            <Setter Property="Background" Value="#0f3460"/>
+                                        </Style>
+                                        <Style Selector="Border:pointerover">
+                                            <Setter Property="Background" Value="#1a4a7a"/>
+                                        </Style>
+                                    </Border.Styles>
+                                    <ItemsControl ItemsSource="{Binding Tvar2Cells}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <UniformGrid Rows="{Binding Tvar2Rows}" Columns="{Binding Tvar2Cols}"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Width="13" Height="13"
+                                                        Margin="1"
+                                                        CornerRadius="2"
+                                                        Background="{Binding}"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Border>
+                            </Button>
+
+                            <Button Command="{Binding VyberTvar3Command}"
+                                    Padding="0" BorderThickness="0" Background="Transparent">
+                                <Border CornerRadius="8"
+                                        Padding="8"
+                                        Width="85" Height="85"
+                                        Cursor="Hand"
+                                        BorderThickness="3"
+                                        BorderBrush="{Binding Tvar3Border}">
+                                    <Border.Styles>
+                                        <Style Selector="Border">
+                                            <Setter Property="Background" Value="#0f3460"/>
+                                        </Style>
+                                        <Style Selector="Border:pointerover">
+                                            <Setter Property="Background" Value="#1a4a7a"/>
+                                        </Style>
+                                    </Border.Styles>
+                                    <ItemsControl ItemsSource="{Binding Tvar3Cells}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <UniformGrid Rows="{Binding Tvar3Rows}" Columns="{Binding Tvar3Cols}"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Width="13" Height="13"
+                                                        Margin="1"
+                                                        CornerRadius="2"
+                                                        Background="{Binding}"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Border>
+                            </Button>
+
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </Grid>
+    </Viewbox>
+</Window>
