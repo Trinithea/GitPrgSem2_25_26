@@ -1,0 +1,74 @@
+﻿<Window x:Class="stanclova_loyd_15.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:stanclova_loyd_15"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <DockPanel> <!--Díky tomu se menu v6dy prilepí nahoru-->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Soubor">
+                <MenuItem Header="Otevřít" Command="{Binding LoadGameCommand}" />
+                <MenuItem Header="Uložit" Command="{Binding SaveGameCommand}" />
+            </MenuItem>
+        </Menu>
+
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <Label FontSize="50" HorizontalAlignment="Center">Loyd 15</Label>
+                <Button Margin="20 10"  Command="{Binding StartCommand}" >Start Game</Button>
+                <Label HorizontalAlignment="Center">Score:</Label>
+                <Label HorizontalAlignment="Center" FontSize="40" Foreground="DarkBlue" Content="{Binding Score}"/>
+                <Label HorizontalAlignment="Center">Best Score:</Label>
+                <Label HorizontalAlignment="Center" FontSize="40" Foreground="DarkRed" Content="{Binding BestScore}"/>
+            </StackPanel>
+
+            <ItemsControl ItemsSource="{Binding Cards}" Grid.Column="1">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="{Binding GridSize}"
+                             Columns="{Binding GridSize}" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button 
+                        Command="{Binding DataContext.CardClickCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                        CommandParameter="{Binding}" 
+                        FontSize="24"
+                        Margin="5">
+
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Content" Value="{Binding Id}"/>
+                                    <Setter Property="Background" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="Black"/>
+                                    <Setter Property="BorderThickness" Value="1"/>
+                                    <Setter Property="IsEnabled" Value="True"/>
+
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsSpace}" Value="True">
+                                            <Setter Property="Content" Value=" "/>
+                                            <Setter Property="Background" Value="Gray"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </DockPanel>
+</Window>
