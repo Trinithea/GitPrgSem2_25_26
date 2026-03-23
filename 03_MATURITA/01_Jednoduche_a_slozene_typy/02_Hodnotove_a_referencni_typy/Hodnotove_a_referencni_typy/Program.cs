@@ -27,11 +27,11 @@ namespace Hodnotove_a_referencni_typy
             // int je hodnotový typ → a a b jsou nezávislé kopie.
             #endregion
 
-            int[] list1 = new int[] { 1, 2, 3 }; // referenční typ (pole)
-            int[] list2 = list1;                 // kopíruje se odkaz, ne data
-            list2[0] = 99;
+            int[] pole1 = new int[] { 1, 2, 3 }; // referenční typ (pole)
+            int[] pole2 = pole1;                 // kopíruje se odkaz, ne data
+            pole2[0] = 99;
 
-            Console.WriteLine($"list1[0] = {list1[0]}, list2[0] = {list2[0]}");
+            Console.WriteLine($"list1[0] = {pole1[0]}, list2[0] = {pole2[0]}");
             #region řešení
             // Výstup: list1[0] = 99, list2[0] = 99
             // int[] je referenční typ → list1 a list2 odkazují na stejné pole.
